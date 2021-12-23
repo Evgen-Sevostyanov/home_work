@@ -20,6 +20,7 @@ package ru.geekbrains;
         static void method2(int a) {
             if (a >= 0)
                 System.out.println("Число " + a + " положительное");
+            System.out.println();
             else
                 System.out.println("Число " + a + " отрицательное");
         }
