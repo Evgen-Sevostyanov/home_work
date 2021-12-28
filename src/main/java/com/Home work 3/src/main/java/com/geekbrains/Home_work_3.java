@@ -2,7 +2,7 @@ package com.geekbrains;
 
 public class Home_work_3 {
     public static void main(String[] args) {
-        int[] mass = {1, 1, 0, 0, 1, 0, 1, 1, 0, 1}; // первое задание
+        int[] mass = {1, 1, 0, 0, 1, 0, 1, 1, 0, 1}; // Первое задание
         int maxMass = mass.length;
         for (int i = 0; i < maxMass; i++)
             if (mass[i] == 1) {
@@ -12,7 +12,7 @@ public class Home_work_3 {
             System.out.print(mass[i] + " ");
         }
         System.out.println();
-        int[] arr = new int[101]; // второе задание
+        int[] arr = new int[101]; // Второе задание
         for (int i = 0; i < 101; i++) {
             arr[i] = i;
             System.out.println("arr[" + i + "] = " + arr[i]);
