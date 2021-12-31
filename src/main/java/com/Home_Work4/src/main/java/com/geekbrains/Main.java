@@ -21,41 +21,55 @@ import java.util.Scanner;
                 if (checkWin(DOT_X)) {
                     System.out.println("Победил человек");
                     break;
-                } else {
-                    if (isMapFull()) {
-                        System.out.println("Ничья");
-                        break;
-                    }
-                    aiTurn();
-                    printMap();
-                    if (checkWin(DOT_O)) {
-                        System.out.println("Победил Искуственный Интеллект");
-                        break;
-                    }
-                    if (isMapFull()) {
-                        System.out.println("Ничья");
-                        break;
-                    }
+                }
+                if (isMapFull()) {
+                    System.out.println("Ничья");
+                    break;
+                }
+                aiTurn();
+                printMap();
+                if (checkWin(DOT_O)) {
+                    System.out.println("Победил Искуственный Интеллект");
+                    break;
+                }
+                if (isMapFull()) {
+                    System.out.println("Ничья");
+                    break;
                 }
             }
             System.out.println("Игра закончена");
         }
 
-
-        public static boolean checkWin(char symb) {
-            boolean winner = true; // установили логическое значение 1
-            for (int i = 0; i < 3; i++) // Блок от 0 до 3
-                if (winner & (map[i][i] == symb)) {
-                    winner = true;
-                } else {
-                    winner = false;
+        public static  boolean checkWin(char dot) { //проверка победы
+            int diag1, diag2, hor, ver;
+            for (int i = 0; i < SIZE; i++) {
+                hor = 0; ver = 0;
+                for (int j = 0; j < SIZE; j++) {
+                    if (map[i][j] == dot) {
+                        hor++;
+                    }
+                    if (map[j][i] == dot) {
+                        ver++;
+                    }
                 }
-            // Дальше мы вернули (true), если во всех клетках нам встретились символы symb
-            if (winner)
-                return true;
-                // или вернули (false), если встретился хоть один символ, отличный от symb
-                return false;
+                if (hor == SIZE|| ver == SIZE) {
+                    return true; //проверка по горизонтали и вертикали
+                }
             }
+            diag1 = 0; diag2 = 0;
+            for (int i = 0; i < SIZE; i++) {
+                if (map[i][i] == dot) {
+                    diag1++;
+                }
+                if (map[i][SIZE - i - 1] == dot) {
+                    diag2++;
+                }
+            }
+            if (diag1 == SIZE || diag2 == SIZE) {
+                return true; //проверка по диагоналям
+            }
+            return false;
+        }
 
         public static boolean isMapFull() {
             for (int i = 0; i < SIZE; i++) {
